@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:allowBackup="false"
+        android:label="MotoG85 ScrollTranslate Canary"
+        android:hasCode="true">
+        <meta-data android:name="xposedmodule" android:value="true" />
+        <meta-data android:name="xposeddescription" android:value="Moto G85 Phase 7.4 Google App MediaProjection consumer enumerator" />
+        <meta-data android:name="xposedminversion" android:value="93" />
+        <meta-data android:name="xposedscope" android:value="com.google.android.googlequicksearchbox" />
+    </application>
+</manifest>
