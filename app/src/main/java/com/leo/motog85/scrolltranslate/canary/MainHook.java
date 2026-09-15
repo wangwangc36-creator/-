@@ -3,7 +3,6 @@ package com.leo.motog85.scrolltranslate.canary;
 import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
-import android.os.Process;
 
 import org.luckypray.dexkit.DexKitBridge;
 import org.luckypray.dexkit.query.FindMethod;
@@ -60,6 +59,14 @@ public final class MainHook implements IXposedHookLoadPackage {
     private static void enumerate(Context context) {
         DexKitBridge bridge = null;
         try {
+            try {
+                System.loadLibrary("dexkit");
+                log("P7.4-LOAD-02 DEXKIT_JNI_OK");
+            } catch (Throwable t) {
+                log("P7.4-90 FAIL_OPEN phase=dexkit_load throwable=" + t.getClass().getName() + ":" + t.getMessage());
+                return;
+            }
+
             String apk = context.getApplicationInfo().sourceDir;
             bridge = DexKitBridge.create(apk);
             MethodDataList methods = bridge.findMethod(
